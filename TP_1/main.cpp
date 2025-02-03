@@ -5,6 +5,7 @@
 
 #if (EXO == 1)
 int main() {
+    // Affiche des messages de bienvenue
     std::cout << "Hello, World!" << std::endl;
     std::cout << "Bienvenue en C++!" << std::endl;
     return 0;
@@ -12,6 +13,7 @@ int main() {
 
 #elif (EXO == 2)
 int main() {
+    // Demande à l'utilisateur d'entrer un nombre et l'affiche
     std::cout << "Entrez un nombre: ";
     int x;
     std::cin >> x;
@@ -21,6 +23,7 @@ int main() {
 
 #elif (EXO == 3)
 int main() {
+    // Demande à l'utilisateur d'entrer deux nombres et affiche les opérations arithmétiques de base
     std::cout << "Entrez deux nombres: ";
     int x, y;
     std::cin >> x >> y;
@@ -33,6 +36,7 @@ int main() {
     
 #elif (EXO == 4)
 int main() {
+    // Code corrigé
     int nombre;
     std::cin >> nombre;
     std::cout << "Vous avez entré: " << nombre << std::endl;
@@ -41,6 +45,7 @@ int main() {
 
 #elif (EXO == 5)
 int main() {
+    // Demande à l'utilisateur d'entrer une température en Celsius et la convertit en Fahrenheit
     std::cout << "Entrez une température en Celsius: ";
     int c;
     std::cin >> c;
