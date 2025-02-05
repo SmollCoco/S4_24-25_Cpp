@@ -41,4 +41,7 @@ int main() {
     std::cout << "Valeurs saisies: " << n << " et " << x << std::endl;
 }
 
+#else
+#error "Veuillez entrer une valeur valide pour EXO (1, 2, 3, 4, 5)"
+
 #endif
