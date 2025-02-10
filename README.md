@@ -25,4 +25,4 @@ git clone https://github.com/SmollCoco/S4_24-25_Cpp.git
 
 ## Utilisation
 
-Naviguez dans le dossier du projet souhaité et suivez les instructions fournies dans sa documentation ou son README.
+Naviguez dans le dossier du projet souhaité et suivez les instructions fournies dans son README.
