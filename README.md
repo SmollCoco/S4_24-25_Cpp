@@ -23,5 +23,6 @@ Pour récupérer une copie locale du projet, exécutez la commande suivante :
 git clone https://github.com/SmollCoco/S4_24-25_Cpp.git
 ```
 
-Utilisation
+## Utilisation
+
 Naviguez dans le dossier du projet souhaité et suivez les instructions fournies dans sa documentation ou son README.
