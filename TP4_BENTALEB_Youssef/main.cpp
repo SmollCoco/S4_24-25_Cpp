@@ -2,7 +2,7 @@
 using namespace std;
 
 #ifndef EXO
-#define EXO 11
+#define EXO 1
 #endif
 
 #if (EXO == 1)
@@ -225,6 +225,6 @@ int main() {
 }
 
 #else
-#error ""
+#error "Veuillez entrer une valeur valide pour EXO (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)"
 
 #endif
