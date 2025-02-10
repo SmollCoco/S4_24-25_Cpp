@@ -6,9 +6,7 @@ Ce dépôt contient des projets et des travaux pratiques en C++ pour l'année ac
 
 - [Structure du projet](#structure-du-projet)  
 - [Installation](#installation)  
-- [Utilisation](#utilisation)  
-- [Contribution](#contribution)  
-- [Licence](#licence)  
+- [Utilisation](#utilisation)
 
 ## Structure du projet
 
