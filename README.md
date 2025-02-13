@@ -14,6 +14,7 @@ Le dépôt est organisé comme suit :
 
 - `TP1_BENTALEB_Youssef/` : Contient les fichiers du premier travail pratique.  
 - `TP2_BENTALEB_Youssef/` : Contient les fichiers du deuxième travail pratique.
+- `TP3_BENTALEB_Youssef/` : Contient les fichiers du troisième travail pratique.
 - `TP4_BENTALEB_Youssef/` : Contient les fichiers du quatrième travail pratique.  
 
 ## Installation
