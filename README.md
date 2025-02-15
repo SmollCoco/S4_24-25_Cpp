@@ -12,10 +12,10 @@ Ce dépôt contient des projets et des travaux pratiques en C++ pour l'année ac
 
 Le dépôt est organisé comme suit :  
 
-- `TP1_BENTALEB_Youssef/` : Contient les fichiers du premier travail pratique.  
-- `TP2_BENTALEB_Youssef/` : Contient les fichiers du deuxième travail pratique.
-- `TP3_BENTALEB_Youssef/` : Contient les fichiers du troisième travail pratique.
-- `TP4_BENTALEB_Youssef/` : Contient les fichiers du quatrième travail pratique.  
+- `TP1_BENTALEB_Youssef/`  
+- `TP2_BENTALEB_Youssef/`
+- `TP3_BENTALEB_Youssef/`
+- `TP4_BENTALEB_Youssef/` 
 
 ## Installation
 
