@@ -17,6 +17,7 @@ Le dépôt est organisé comme suit :
 - `TP3_BENTALEB_Youssef/`
 - `TP4_BENTALEB_Youssef/` 
 - `TP5_BENTALEB_Youssef/` 
+- `TP6_BENTALEB_Youssef/` 
 
 ## Installation
 
