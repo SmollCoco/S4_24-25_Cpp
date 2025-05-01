@@ -34,5 +34,5 @@ g++ -o main main.cpp -DEXO=3
 
 -   `EXO == 1` : Affiche un message si `DEBUG` est défini.
 -   `EXO == 2` : Affiche les arguments passés au programme.
--   `EXO == 3` : Utilisation d’un `namespace` pour afficher une variable.
--   `EXO == 4` : Saisie et affichage d’un entier et d’un nombre décimal.
+-   `EXO == 3` : Utilisation d'un `namespace` pour afficher une variable.
+-   `EXO == 4` : Saisie et affichage d'un entier et d'un nombre décimal.

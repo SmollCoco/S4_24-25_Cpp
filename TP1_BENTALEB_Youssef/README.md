@@ -32,8 +32,8 @@ g++ -o main main.cpp -DEXO=3
 
 ## Exercices disponibles
 
--   `EXO == 1` : Affiche un message.
--   `EXO == 2` : Demande un nombre et l’affiche.
--   `EXO == 3` : Effectue des opérations mathématiques.
--   `EXO == 4` : Affiche un nombre saisi.
--   `EXO == 5` : Convertit une température de Celsius en Fahrenheit.
+- `EXO == 1` : Affiche un message.
+- `EXO == 2` : Demande un nombre et l'affiche.
+- `EXO == 3` : Effectue des opérations mathématiques.
+- `EXO == 4` : Affiche un nombre saisi.
+- `EXO == 5` : Convertit une température de Celsius en Fahrenheit.

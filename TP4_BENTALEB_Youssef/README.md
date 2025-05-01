@@ -1,6 +1,6 @@
 # README - TP 4
 
-**Auteur : Youssef BENTALEB**  
+**Auteur : Joseph**  
 **Répertoire GitHub :** [S4_24-25_Cpp](https://github.com/SmollCoco/S4_24-25_Cpp)
 
 ## Description

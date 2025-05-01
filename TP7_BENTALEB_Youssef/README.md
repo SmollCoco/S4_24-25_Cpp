@@ -5,7 +5,7 @@
 
 ## Description
 
-Ce TP contient 7 exercices sur la programmation orientée objet en C++ avec les pointeurs. Chaque exercice est compilé séparément et explore des concepts essentiels tels que la gestion dynamique d’objets, les modificateurs d’accès, les constructeurs/destructeurs, et les pointeurs intelligents.
+Ce TP contient 7 exercices sur la programmation orientée objet en C++ avec les pointeurs. Chaque exercice est compilé séparément et explore des concepts essentiels tels que la gestion dynamique d'objets, les modificateurs d'accès, les constructeurs/destructeurs, et les pointeurs intelligents.
 
 ## Compilation et exécution
 
@@ -23,7 +23,7 @@ make  # Compile tous les exercices
     ./exo1
     ```
 
--   Exercice 2 (Gestion d’objets avec pointeurs) :
+-   Exercice 2 (Gestion d'objets avec pointeurs) :
 
     ```sh
     ./exo2
@@ -35,7 +35,7 @@ make  # Compile tous les exercices
     ./exo3
     ```
 
--   Exercice 4 (Gestion d’inventaire avec pointeurs dynamiques) :
+-   Exercice 4 (Gestion d'inventaire avec pointeurs dynamiques) :
 
     ```sh
     ./exo4
@@ -60,31 +60,31 @@ make  # Compile tous les exercices
 
 ## Exercices disponibles
 
-### Exercice 1 : Définition d’une classe et création d’objets
+### Exercice 1 : Définition d'une classe et création d'objets
 
 -   Implémente une classe `Joueur` avec les attributs `nom` et `score`.
 -   Ajoute des méthodes pour afficher les informations du joueur.
 -   Crée plusieurs objets et les affiche.
 
-### Exercice 2 : Gestion d’objets avec pointeurs
+### Exercice 2 : Gestion d'objets avec pointeurs
 
--   Utilise les modificateurs `public` et `private` pour restreindre l’accès aux données.
--   Montre l’usage des opérateurs `.` et `->` pour accéder aux membres d’une classe.
+-   Utilise les modificateurs `public` et `private` pour restreindre l'accès aux données.
+-   Montre l'usage des opérateurs `.` et `->` pour accéder aux membres d'une classe.
 -   Alloue dynamiquement un objet avec `new` et le libère avec `delete`.
 
 ### Exercice 3 : Constructeurs et destructeurs
 
--   Implémente un constructeur pour initialiser les attributs d’un objet.
--   Définit un destructeur affichant un message lors de la destruction de l’objet.
+-   Implémente un constructeur pour initialiser les attributs d'un objet.
+-   Définit un destructeur affichant un message lors de la destruction de l'objet.
 
-### Exercice 4 : Gestion d’un inventaire avec pointeurs dynamiques
+### Exercice 4 : Gestion d'un inventaire avec pointeurs dynamiques
 
 -   Crée une classe `Objet` avec un nom et une quantité.
 -   Implémente une classe `Inventaire` utilisant des pointeurs dynamiques.
 -   Ajoute et retire des objets dynamiquement.
 -   Libère la mémoire allouée.
 
-### Exercice 5 : Gestion d’un système de notes
+### Exercice 5 : Gestion d'un système de notes
 
 -   Implémente une classe `Étudiant` avec un nom et une liste de notes.
 -   Ajoute une méthode pour calculer la moyenne des notes.
@@ -98,5 +98,5 @@ make  # Compile tous les exercices
 ### Exercice 7 : Implémentation de shared_ptr (sans smart pointer)
 
 -   Crée une classe `SharedPtr` gérant un pointeur avec un compteur de références.
--   Met en place l’incrémentation et la décrémentation du compteur lors de la copie et de la destruction.
--   Assure la suppression automatique de l’objet lorsque le compteur atteint zéro.
+-   Met en place l'incrémentation et la décrémentation du compteur lors de la copie et de la destruction.
+-   Assure la suppression automatique de l'objet lorsque le compteur atteint zéro.
