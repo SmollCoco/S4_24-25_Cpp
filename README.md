@@ -22,6 +22,9 @@ Le dépôt est organisé comme suit :
 - `TP8_1_BENTALEB_Youssef/` 
 - `TP9_BENTALEB_Youssef/` 
 - `MiniProjet_BENTALEB_Youssef/` 
+- `TP10_BENTALEB_Youssef/` 
+- `TP11_BENTALEB_Youssef/` 
+- `TP12_BENTALEB_Youssef/` 
 
 ## Installation
 
