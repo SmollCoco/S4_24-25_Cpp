@@ -1,0 +1,10 @@
+John_Doe 28 45000.75
+Jane_Smith 34 57800.50
+Michael_Johnson 42 68250.25
+Emily_Williams 31 52340.00
+Robert_Brown 39 62500.75
+Sarah_Davis 26 48750.25
+David_Miller 45 73800.00
+Jennifer_Wilson 33 59250.50
+Christopher_Moore 37 64900.25
+Lisa_Taylor 29 51200.75

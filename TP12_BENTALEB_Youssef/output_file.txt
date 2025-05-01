@@ -1,0 +1,3 @@
+The program should find this line because it contains the keyword apple.
+Here's another line with the keyword apple in it.
+Let's make this the last line of the output file: apple.

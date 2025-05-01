@@ -1,0 +1,7 @@
+This is a test file for keyword searching.
+The program should find this line because it contains the keyword apple.
+This line has nothing special.
+Here's another line with the keyword apple in it.
+Keywords are case sensitive, so APPLE won't match the keyword.
+This is the last line of the test file.
+Let's make this the last line of the output file: apple.
