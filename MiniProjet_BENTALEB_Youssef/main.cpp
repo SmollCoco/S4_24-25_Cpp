@@ -1,4 +1,6 @@
+#include "CloudExceptions.hpp"
 #include "Cloud_Util.hpp"
+#include <algorithm>
 #include <iostream>
 using namespace std;
 
@@ -116,6 +118,100 @@ int main() {
     for (size_t i = 0; i < clusters.size(); ++i) {
         std::cout << "\n=== Metrics for Cluster " << (i + 1) << " ===\n";
         display(clusters[i]);
+    }
+
+    std::cout << "=== Test AllocationException direct ===\n";
+    /* Modifier cette partie pour gérer l'exception*/
+    try {
+        Server failNode("fail-node", 1.0, 1024.0);
+        failNode.allocate(4.0, 4096.0); // Trop gros
+    } catch (const AllocationException& e) {
+        std::cout << "Exception d'allocation: " << e.what() << std::endl;
+    }
+
+    std::cout << "\n=== Test FileException ===\n";
+    KubernetesCluster cluster;
+    auto nodeX = std::make_shared<Server>("nodeX", 12.0, 12048.0);
+    nodeX->start(); // activer le noeud
+    cluster.addNode(nodeX); // cluster non vide
+    /* Gérer l'erreur d'ouverture du fichier */
+    try {
+        saveClusterMetrics(cluster, "cluster1_metrics.txt");
+    } catch (const FileException& e) {
+        std::cout << "Exception de fichier: " << e.what() << std::endl;
+    }
+
+    std::cout << "\n=== Test Lambda : serveurs inactifs ===\n";
+    KubernetesCluster cluster3;
+    auto inactiveServer = std::make_shared<Server>("node3", 2.0, 4096.0); // Ne sera pas activé
+    cluster3.addNode(inactiveServer);
+    /* Filtrer et afficher les serveurs inactifs à l'aide de la fonction getFilteredServers */
+    auto inactifs = cluster3.getFilteredServers([](const Server& s) {
+        return !s.isActive();
+    });
+    std::cout << "Serveurs inactifs: " << inactifs.size() << std::endl;
+    for (const auto& server : inactifs) {
+        std::cout << "Serveur: " << server->getName() << std::endl;
+    }
+
+    std::cout << "\n=== Déploiement sur un serveur inactif ===\n";
+    auto c = std::make_unique<Container>("inactive-c1", "busybox", 1.0, 1024.0);
+    auto pod = std::make_unique<Pod>("test-pod");
+    pod->addContainer(std::move(c));
+    /* Gérer l'erreur ici du deploiement */
+    try {
+        cluster3.deployPod(std::move(pod));
+    } catch (const ServerInactiveException& e) {
+        std::cout << "Exception de serveur inactif: " << e.what() << std::endl;
+    }
+
+    std::cout << "\n=== Pods triés par nombre de conteneurs ===\n";
+    // Création des conteneurs
+    auto c1 = std::make_unique<Container>("c1", "nginx", 2.0, 1024.0);
+    auto c2 = std::make_unique<Container>("c2", "redis", 4, 2048.0);
+    auto c3 = std::make_unique<Container>("c3", "mysql", 2, 1024.0);
+    auto c4 = std::make_unique<Container>("c4", "myapp", 10, 12024.0);
+    
+    // Création des pods
+    auto pod1 = std::make_unique<Pod>("web-pod");
+    pod1->addContainer(std::move(c1));
+    pod1->addContainer(std::move(c2));
+
+    auto pod2 = std::make_unique<Pod>("db-pod");
+    pod2->addContainer(std::move(c3));
+
+    // Déploiement sans planification réelle, on injecte les pods manuellement
+    std::vector<std::unique_ptr<Pod>> pods;
+    pods.push_back(std::move(pod1));
+    pods.push_back(std::move(pod2));
+    
+    /* Gérer le deploiement */
+    try {
+        auto newPod = std::make_unique<Pod>("big-pod");
+        newPod->addContainer(std::move(c4));
+        cluster.deployPod(std::move(newPod));
+    } catch (const std::exception& e) {
+        std::cout << "Exception lors du déploiement: " << e.what() << std::endl;
+    }
+
+    std::cout << "\n=== Tri des pods ===\n";
+    /* Tri des pods */
+    std::vector<const Pod*> podRefs;
+    for (const auto& pod : cluster.getPods()) {
+        podRefs.push_back(pod.get());
+    }
+    std::sort(podRefs.begin(), podRefs.end(), [](const Pod* a, const Pod* b) {
+        return a->getContainers().size() > b->getContainers().size();
+    });
+    for (const auto& pod : podRefs) {
+        std::cout << "Pod: " << pod->getName() << " - Conteneurs: " << pod->getContainers().size() << std::endl;
+    }
+
+    std::cout << "\n=== Tous les conteneurs du cluster 1 ===\n";
+    for (const auto& pod : cluster.getPods()) {
+        for (const auto& container : pod->getContainers()) {
+            std::cout << "Pod: " << pod->getName() << ", Conteneur: " << container->getName() << std::endl;
+        }
     }
 
     return 0;

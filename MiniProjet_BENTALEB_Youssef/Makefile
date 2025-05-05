@@ -16,19 +16,19 @@ Pod.o: Pod.cpp Pod.hpp Container.hpp Resource.hpp
 	@echo "Compiling Pod.cpp"
 	g++ -c -Wall -Wextra --std=c++23 Pod.cpp
 
-Server.o: Server.cpp Server.hpp Resource.hpp
+Server.o: Server.cpp Server.hpp Resource.hpp CloudExceptions.hpp
 	@echo "Compiling Server.cpp"
 	g++ -c -Wall -Wextra --std=c++23 Server.cpp
 
-KubernetesCluster.o: KubernetesCluster.cpp KubernetesCluster.hpp Pod.hpp Server.hpp
+KubernetesCluster.o: KubernetesCluster.cpp KubernetesCluster.hpp Pod.hpp Server.hpp CloudExceptions.hpp
 	@echo "Compiling KubernetesCluster.cpp"
 	g++ -c -Wall -Wextra --std=c++23 KubernetesCluster.cpp
 
-Cloud_Util.o: Cloud_Util.cpp Cloud_Util.hpp KubernetesCluster.hpp
+Cloud_Util.o: Cloud_Util.cpp Cloud_Util.hpp KubernetesCluster.hpp CloudExceptions.hpp MetricLogger.hpp
 	@echo "Compiling Cloud_Util.cpp"
 	g++ -c -Wall -Wextra --std=c++23 Cloud_Util.cpp
 
-main.o: main.cpp Cloud_Util.hpp KubernetesCluster.hpp Pod.hpp Server.hpp Container.hpp Resource.hpp
+main.o: main.cpp Cloud_Util.hpp KubernetesCluster.hpp Pod.hpp Server.hpp Container.hpp Resource.hpp CloudExceptions.hpp MetricLogger.hpp
 	@echo "Compiling main.cpp"
 	g++ -c -Wall -Wextra --std=c++23 main.cpp
 

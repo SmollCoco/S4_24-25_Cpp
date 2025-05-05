@@ -1,3 +1,4 @@
+#include "CloudExceptions.hpp"
 #include "KubernetesCluster.hpp"
 #include <iostream>
 #include <utility>
@@ -17,10 +18,28 @@ bool KubernetesCluster::removePod(const std::string& name) {
 }
 
 void KubernetesCluster::deployPod(std::unique_ptr<Pod> pod) {
-    if (schedulePod(*pod)) {
-        pods_.push_back(std::move(pod));
-    } else {
-        std::cout << "Échec du déploiement du pod : ressources insuffisantes.\n";
+    if (nodes_.empty()) {
+        throw AllocationException("Pas de serveurs disponibles dans le cluster pour le pod " + pod->getName());
+    }
+    bool hasActiveServer = false;
+    for (const auto& node : nodes_) {
+        if (node->isActive()) {
+            hasActiveServer = true;
+            break;
+        }
+    }
+    if (!hasActiveServer) {
+        throw ServerInactiveException("Pas de serveurs actifs dans le cluster pour le pod " + pod->getName());
+    }
+    
+    try {
+        if (schedulePod(*pod)) {
+            pods_.push_back(std::move(pod));
+        } else {
+            throw AllocationException("Impossible de planifier le pod " + pod->getName() + " sur un serveur actif.");
+        }
+    } catch (const AllocationException& e) {
+        throw; // Re-throw to be handled by the caller
     }
 }
 
@@ -31,11 +50,18 @@ bool KubernetesCluster::schedulePod(Pod& pod) {
         total_cpu += container->getCpu();
         total_memory += container->getMemory();
     }
-
     for (const auto& node : nodes_) {
-        if (node->allocate(total_cpu, total_memory)) {
-            pod.deploy();
-            return true;
+        if (!node->isActive()) {
+            continue; // Skip inactive nodes
+        }
+        try {
+            if (node->allocate(total_cpu, total_memory)) {
+                pod.deploy();
+                return true;
+            }
+        } catch (const AllocationException& e) {
+            // Continue to the next node if allocation fails on this one
+            continue;
         }
     }
     return false;
@@ -65,4 +91,22 @@ std::string KubernetesCluster::getMetrics() const {
 std::ostream& operator<<(std::ostream& os, const KubernetesCluster& c) {
     os << c.getMetrics();
     return os;
+}
+
+std::vector<std::shared_ptr<Server>> KubernetesCluster::getFilteredServers(std::function<bool(const Server&)> filter) {
+    std::vector<std::shared_ptr<Server>> filtered_servers;
+    for (const auto& server : nodes_) {
+        if (filter(*server)) {
+            filtered_servers.push_back(server); // Use the existing shared_ptr instead of creating a new copy
+        }
+    }
+    return filtered_servers;
+}
+
+std::vector<std::unique_ptr<Pod>>& KubernetesCluster::getPods() {
+    return pods_;
+}
+
+const std::vector<std::unique_ptr<Pod>>& KubernetesCluster::getPods() const {
+    return pods_;
 }

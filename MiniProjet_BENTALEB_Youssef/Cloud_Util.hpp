@@ -5,11 +5,9 @@
 #include <memory>
 #include <vector>
 
-// Forward declarations
-class KubernetesCluster;
-class Pod;
-
 void display(const KubernetesCluster& cluster);  // Affiche les métriques du cluster
 void deployPods(KubernetesCluster& cluster, std::vector<std::unique_ptr<Pod>>& pods);  // Déploie plusieurs pods
+void saveClusterMetrics(const KubernetesCluster& cluster, const std::string& filename);  // Enregistre les métriques du cluster dans un fichier
+void forEachContainer(const KubernetesCluster& cluster, const std::function<void(const Container&)>& func);
 
 #endif // CLOUD_UTIL_HPP

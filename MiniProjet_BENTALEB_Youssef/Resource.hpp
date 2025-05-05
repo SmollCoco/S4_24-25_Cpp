@@ -18,4 +18,4 @@ public:
     virtual ~Resource() = default;  // Destructeur virtuel
 };
 
-#endif // RESOURCE_HPP
+#endif

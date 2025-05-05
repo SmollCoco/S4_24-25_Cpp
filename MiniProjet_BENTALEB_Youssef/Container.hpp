@@ -5,9 +5,6 @@
 #include <iostream>
 #include <string>
 
-// Forward declarations
-class Resource;
-
 class Container : public Resource {
 // Hérite de : Resource
 private:
@@ -17,10 +14,11 @@ public:
     std::string getId() const { return id_; }  // Récupère l'identifiant
     double getCpu() const { return cpu_; }  // Récupère la capacité CPU
     double getMemory() const { return memory_; }  // Récupère la mémoire
+    std::string getName() const { return id_; }  // Récupère le nom
     void start() override;  // Active le conteneur
     void stop() override;  // Désactive le conteneur
     std::string getMetrics() const override;  //  Format : [Container : id : CPU, Memory, Image]
     friend std::ostream& operator<<(std::ostream& os, const Container& c);  // Même format que getMetrics
 };
 
-#endif // CONTAINER_HPP
+#endif

@@ -7,9 +7,6 @@
 #include <vector>
 #include <iostream>
 
-// Forward declarations
-class Container;
-
 class Pod {
 // Ne hérite pas de Resource, mais gère des conteneurs
 private:
@@ -27,4 +24,4 @@ public:
     const std::vector<std::unique_ptr<Container>>& getContainers() const;  // Récupère les conteneurs
 };
 
-#endif // POD_HPP
+#endif

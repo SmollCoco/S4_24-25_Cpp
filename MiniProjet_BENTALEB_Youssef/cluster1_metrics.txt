@@ -1,0 +1,1 @@
+[KubernetesCluster : [Server: nodeX      | Total: 12 CPU, 12048  MB | Free: 12 CPU, 12048  MB], ]
