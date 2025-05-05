@@ -39,7 +39,7 @@ void KubernetesCluster::deployPod(std::unique_ptr<Pod> pod) {
             throw AllocationException("Impossible de planifier le pod " + pod->getName() + " sur un serveur actif.");
         }
     } catch (const AllocationException& e) {
-        throw; // Re-throw to be handled by the caller
+        throw AllocationException("Erreur de planification du pod " + pod->getName() + ": " + e.what());
     }
 }
 
@@ -60,7 +60,6 @@ bool KubernetesCluster::schedulePod(Pod& pod) {
                 return true;
             }
         } catch (const AllocationException& e) {
-            // Continue to the next node if allocation fails on this one
             continue;
         }
     }
@@ -97,7 +96,7 @@ std::vector<std::shared_ptr<Server>> KubernetesCluster::getFilteredServers(std::
     std::vector<std::shared_ptr<Server>> filtered_servers;
     for (const auto& server : nodes_) {
         if (filter(*server)) {
-            filtered_servers.push_back(server); // Use the existing shared_ptr instead of creating a new copy
+            filtered_servers.push_back(server);
         }
     }
     return filtered_servers;

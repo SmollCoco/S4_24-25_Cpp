@@ -10,4 +10,4 @@ void deployPods(KubernetesCluster& cluster, std::vector<std::unique_ptr<Pod>>& p
 void saveClusterMetrics(const KubernetesCluster& cluster, const std::string& filename);  // Enregistre les métriques du cluster dans un fichier
 void forEachContainer(const KubernetesCluster& cluster, const std::function<void(const Container&)>& func);
 
-#endif // CLOUD_UTIL_HPP
+#endif

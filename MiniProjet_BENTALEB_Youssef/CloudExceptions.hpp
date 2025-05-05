@@ -2,7 +2,7 @@
 #include <string>
 
 class CloudException : public std::exception {
-    protected: // Changed from private to protected so derived classes can access
+    protected:
         std::string msg_;
     public:
         explicit CloudException(const std::string& message) : msg_(message) {}
